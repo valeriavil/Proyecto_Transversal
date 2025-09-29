@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Frutas de Temporada - Villa de Allende</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Frutas frescas, frutas de temporada, Villa de Allende" name="keywords">
+  <meta content="Venta y difusión de frutas frescas de temporada en Villa de Allende" name="description">
+
+  <style>
+    /* --- GENERAL --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333;
+    }
+
+    a { text-decoration: none; }
+
+    /* --- TOPBAR --- */
+    .topbar {
+      background: #6c757d;
+      color: #fff;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+    .topbar a {
+      color: #fff;
+      margin-left: 10px;
+    }
+
+    /* --- NAVBAR --- */
+    nav {
+      background: #222;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav .logo img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    nav .logo h1 {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    nav .logo span {
+      color: #ff914d;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: bold;
+    }
+    nav ul li a:hover {
+      color: #ff914d;
+    }
+
+    /* --- CAROUSEL --- */
+    .carousel {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .slides {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      animation: slide 12s infinite;
+    }
+    .slide {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+  /* 🔹 Esto centra todo el contenido dentro del slide */
+  display: flex;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
+}
+    .caption {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px 30px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  max-width: 90%;
+}
+    .caption h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: #ffd700;
+    }
+    .caption h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .caption p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    .caption a {
+      background: #ff914d;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      display: inline-block;
+    }
+    .caption a:hover {
+      background: #e66e2f;
+    }
+
+    @keyframes slide {
+      0%   { transform: translateX(0); }
+      40%  { transform: translateX(0); }
+      50%  { transform: translateX(-100%); }
+      90%  { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* --- ABOUT --- */
+    .about {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h4 {
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+    .about-text h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .about-text p {
+      margin-bottom: 15px;
+    }
+    .about-imgs {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .about-imgs img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    /* --- SERVICES --- */
+    .services {
+      background: #f8f9fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .services h4 {
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+    .services h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .service {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .service h3 {
+      margin: 15px 0;
+    }
+
+    /* --- CONTACT --- */
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .contact h4 {
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+    .contact h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact input, .contact textarea {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+    .contact button {
+      padding: 15px;
+      background: #ff914d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .contact button:hover {
+      background: #e66e2f;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .caption {
+        max-width: 100%;
+        padding: 15px;
+      }
+      .caption h1 { font-size: 1.5rem; }
+      .caption h3 { font-size: 1rem; }
+      .caption p  { font-size: 0.9rem; }
+      .about { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span>🌱 Frutas frescas de temporada en Villa de Allende</span>
+    <div>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/valeriavil/Proyecto_Transversal/main/logovale.png" alt="Logo">
+      <h1><span>Frutas</span>Allende</h1>
+    </div>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- CAROUSEL -->
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide" style="background-image: url('https://images.pexels.com/photos/1128678/pexels-photo-1128678.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+        <div class="caption">
+          <h3>Frutas locales</h3>
+          <h1>Frescura garantizada</h1>
+          <p>Directo del campo de Villa de Allende a tu mesa</p>
+          <a href="#catalogo">Comprar ahora</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+        <div class="caption">
+          <h3>De temporada</h3>
+          <h1>Variedad de sabores</h1>
+          <p>Las mejores frutas en cada estación del año</p>
+          <a href="#catalogo">Explorar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <h4>Sobre Nosotros</h4>
+      <h1><span style="color:#ff914d;">Frutas</span> Frescas</h1>
+      <p>En Villa de Allende promovemos el consumo de frutas de temporada, cultivadas de manera natural y local.</p>
+      <p>Nuestro compromiso es ofrecer productos de calidad, apoyar a productores locales y fomentar una alimentación saludable.</p>
+      <ul>
+        <li>✔ Frescura garantizada</li>
+        <li>✔ Apoyo al productor local</li>
+        <li>✔ Variedad de temporada</li>
+      </ul>
+    </div>
+    <div class="about-imgs">
+      <img src="https://images.pexels.com/photos/137119/pexels-photo-137119.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="">
+      <img src="https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+      <img src="https://images.pexels.com/photos/461208/pexels-photo-461208.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="servicios">
+    <h4>Nuestros Servicios</h4>
+    <h1><span style="color:#ff914d;">Venta</span> y Difusión</h1>
+    <div class="service-grid">
+      <div class="service">
+        <h3>🍎 Frutas frescas</h3>
+        <p>Manzanas, peras, duraznos y más, cultivados en nuestra región.</p>
+      </div>
+      <div class="service">
+        <h3>🛒 Pedidos locales</h3>
+        <p>Recibe frutas frescas en tu casa o negocio en Villa de Allende.</p>
+      </div>
+      <div class="service">
+        <h3>🌿 Consumo saludable</h3>
+        <p>Promovemos una alimentación natural con productos frescos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
+    <h4>Contáctanos</h4>
+    <h1>Estamos para servirte</h1>
+    <form>
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Tu correo" required>
+      <input type="text" placeholder="Asunto" required>
+      <textarea rows="5" placeholder="Mensaje" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Frutas Allende. Todos los derechos reservados.</p>
+    <p>Diseñado con ❤ para Villa de Allende</p>
+  </footer>
+
+</body>
+</html>
